@@ -1,0 +1,50 @@
+auto drive = ChassisControllerFactory::create({(int8_t)BACK_LEFT_WHEEL_PORT,(int8_t) FRONT_LEFT_WHEEL_PORT}, {(int8_t)-BACK_RIGHT_WHEEL_PORT,(int8_t) -FRONT_RIGHT_WHEEL_PORT}, AbstractMotor::gearset::green,{4_in, 12_in});
+    auto controller = AsyncControllerFactory::posIntegrated((int8_t)CLAW_PORT);
+    
+    drive.moveDistance(4_ft);
+    
+
+    drive.moveDistance(1_ft);
+
+    drive.moveDistance(4_ft);
+    drive.waitUntilSettled();
+    drive.turnAngle(90_deg);
+    
+
+    controller.tarePosition();
+    controller.setTarget(360);
+    controller.waitUntilSettled();
+
+    
+
+    controller.stop();
+
+    drive.turnAngle(45_deg);
+    drive.waitUntilSettled();
+    drive.moveDistance(7_ft);
+    drive.waitUntilSettled();
+    
+    /*
+    drive.setMaxVelocity(75);
+    drive.moveDistance(10_in);
+    
+    //drive.moveDistance(5_in);
+    drive.waitUntilSettled();   
+    drive.turnAngle(93_deg);
+    //drive.moveDistance(28_in);
+    drive.waitUntilSettled();
+    //controller.tarePosition();
+    //controller.setTarget(-220);
+    //controller.waitUntilSettled();
+    drive.moveDistance(-28_in);
+    drive.waitUntilSettled();
+    drive.moveDistance(28_in);
+    */
+    // Auton Plan:
+    // Drive Forward
+    // Open claw
+    // Drive back
+    // TUrn Right
+    // Drive Forward
+    // Release
+    // Drive Backward
